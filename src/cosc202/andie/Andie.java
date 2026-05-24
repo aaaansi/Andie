@@ -78,8 +78,10 @@ public class Andie {
         // Set up the main GUI frame
         JFrame frame = new JFrame("ANDIE");
 
-        Image image = ImageIO.read(new File("./src/icon.png"));
-        frame.setIconImage(image);
+        java.net.URL iconUrl = Andie.class.getClassLoader().getResource("icon.png");
+        if (iconUrl != null) {
+            frame.setIconImage(ImageIO.read(iconUrl));
+        }
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JToolBar toolbar = new JToolBar("test");

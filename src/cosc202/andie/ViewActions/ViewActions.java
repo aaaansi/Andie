@@ -81,7 +81,7 @@ public class ViewActions {
      * @throws IOException
      */
     public JButton createZoomOutButton() throws IOException {
-        ImageIcon zoomOutIcon = new ImageIcon(ImageIO.read(new File("./src/zoom-out.png")));
+        ImageIcon zoomOutIcon = new ImageIcon(ImageIO.read(ViewActions.class.getClassLoader().getResource("zoom-out.png")));
         JButton zoomOutButton = new JButton(zoomOutIcon);
         zoomOutButton.addActionListener(new ZoomOutAction());
 
@@ -95,7 +95,7 @@ public class ViewActions {
      * @throws IOException
      */
     public JButton createZoomInButton() throws IOException {
-        ImageIcon zoomInIcon = new ImageIcon(ImageIO.read(new File("./src/zoom-in.png")));
+        ImageIcon zoomInIcon = new ImageIcon(ImageIO.read(ViewActions.class.getClassLoader().getResource("zoom-in.png")));
         JButton zoomInButton = new JButton(zoomInIcon);
         zoomInButton.addActionListener(new ZoomInAction());
 

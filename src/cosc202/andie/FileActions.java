@@ -75,7 +75,7 @@ public class FileActions {
      * @throws IOException
      */
     public JButton createSaveButton() throws IOException {
-        ImageIcon saveIcon = new ImageIcon(ImageIO.read(new File("./src/save.png")));
+        ImageIcon saveIcon = new ImageIcon(ImageIO.read(FileActions.class.getClassLoader().getResource("save.png")));
         JButton saveButton = new JButton(saveIcon);
         saveButton.addActionListener(new FileSaveAction());
 

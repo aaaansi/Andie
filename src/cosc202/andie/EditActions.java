@@ -71,7 +71,7 @@ public class EditActions {
      * @throws IOException
      */
     public JButton createUndoButton() throws IOException {
-        ImageIcon undoIcon = new ImageIcon(ImageIO.read(new File("./src/undo.png")));
+        ImageIcon undoIcon = new ImageIcon(ImageIO.read(EditActions.class.getClassLoader().getResource("undo.png")));
         JButton undoButton = new JButton(undoIcon);
         undoButton.addActionListener(new UndoAction());
 
@@ -85,7 +85,7 @@ public class EditActions {
      * @throws IOException
      */
     public JButton createRedoButton() throws IOException {
-        ImageIcon redoIcon = new ImageIcon(ImageIO.read(new File("./src/redo.png")));
+        ImageIcon redoIcon = new ImageIcon(ImageIO.read(EditActions.class.getClassLoader().getResource("redo.png")));
         JButton redoButton = new JButton(redoIcon);
         redoButton.addActionListener(new RedoAction());
 
