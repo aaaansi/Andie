@@ -1,6 +1,15 @@
 # ignore generated artefacts
-bin/*.class
-doc
+bin/
+*.class
+doc/
 
 # Ignore VSCode settings
 .vscode/settings.json
+
+# IDE files
+*.iml
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

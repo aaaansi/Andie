@@ -1,67 +1,99 @@
-# Features
+# ANDIE — A Non-Destructive Image Editor
 
-### **Extended filters**
-#### *Implemented by Lydia Acton, and Callum Walker*
-Although Callum didn't work on the second part of the project, he already did the extended filters when he created the filters in the first part of the project. Callum write the code for the extended filters and Lydia copy and pasted them to the mean filter where it hadn't been implimented. 
-- Accessed via: There's 'extended filter' code used for the mean, and gaussian filter, the other kernal filters don't have the issue of a black border, because the radius of the kernals used is too small to see any difference
-- I've tested it on various images, including transperent.
-- The filter does cause a kinda of blury border around the edge, its not nearly as noticable and the hard black border. This can't really be fixed, different implmentations will lead to differnt non-perfect results, so this is acceptable.
-<br/><br/>
+A desktop image editor built in Java Swing that applies all operations non-destructively, preserving the original image at every step. Developed as a team project for COSC202 at the University of Otago.
 
-### **Emboss and edge detection filters (filters w/ negative results)**
-#### *Implemented by Lydia Acton*
-- Accessed via: Filter menu (Emboss Filter) and (Sobel Filter) and Key shortcuts (Ctrl + E) and (Ctrl + H)
-- I've tested it on various images, including transperent. I've implement the eight emboss filters as each being applied at different angle. I made sure the angle was for the correct filter, but comparing my results to a seperate image editor which also allows you apply an emboss filter at an angle. 
-- My emboss filter can only be applied at angles that are a multiple of 45 degrees. While on windows the slider works as intended an only allows those values, that isn't the case for mac. While my code still works and will pick the closest apropiate value, its a usability issue if the user is able to input a value which autually can't be used.
-<br/><br/>
+**[Try it in your browser](https://aaaansi.github.io/Andie/)** — no install required, runs via CheerpJ.
 
-### **Posterise effect**
-#### *Implemented by Lydia Acton*
-- Accessed via: Filter menu (Posterise) and Key shortcuts (Ctrl + P)
-- I've tested it on various images, including transperent. I tested it on large images, initially because the k-means clustering had to sort all the pixels in the image many times, it took took long. So I changed my code so that for larger images it won't read in every single pixel, but will skip some, making the code run much faster.
-- No known issues
-<br/><br/>
+<!-- Replace with your own screenshot: take a screenshot of ANDIE with an image loaded, save it as docs/screenshot.png -->
+![ANDIE screenshot](docs/screenshot.png)
 
-### **Mouse selection of rectangular regions**
-#### *Implemented by Ella Taylor and Hamzah Alansi *
-- Accessed via: Clicking and dragging across the screen.
-- Tested on images that are zoomed in or out, and transparent/opaque images. Previously it didn't work and would draw the rectangular behind or infront of the mouse. Now the rectangular selection considers the scale of the image, and it works fine. Also won't select 1x1 rectangle if you just click. Automatically deselects when save/open options are used and after a shape has been drawn/crop/filter has been applied. Can select area outside of the image, as this is consistent with some other photo editors I have used. However, shapes etc. will be cut off by the edge of the image (aren't drawn outside the image).
-- Known issues...
-<br/><br/>
+---
 
-### **Crop to selection**
-#### *Implemented by Hamzah Alansi *
-- Accessed via: Transformation tab, Keyboard Shortcut (Shift + X), Crop to selection works by selecting a mouse region first before using the action. The best way to do this would be to mouse select then use the shortcut.
-- Tested on: 2 images with different background transparencies.
-- No known issues
-<br/><br/>
+## Features
 
-### **Drawing functions**
-#### *Implemented by Ella Taylor *
-- Accessed via: Corresponding menu tabs. Area of image must be selected first, then shape/line is drawn within.
-- Tested on transparent and opaque images. Tested attempting to draw a shape with selection fully out of bounds (no shape is drawn) and partially in bounds (shape is cut off at boundary). Warns the user if they attempt to draw shape when no image is loaded or if no area is selected. Successfully drawing a shape removes the area selection box. I chose to implement vertical and horizontal lines specifically (even though they are technically superfluous because they can be drawn with a mouse region of zero width etc.) because it is difficult to draw a perfectly straight line with the diagonal line method. 
-- Known issues: Doesn't work with macros or redo (undo works fine)
-<br/><br/>
+### Filters
+- **Mean, Gaussian, Median, Sharpen** — classic convolution-based filters with configurable radius
+- **Emboss** — directional emboss at 8 angles (multiples of 45°)
+- **Sobel Edge Detection** — highlights edges in the image
+- **Posterise** — reduces colour palette using k-means clustering, optimised for large images
+- **Region filtering** — apply any filter to just a selected rectangular area
 
-### **Macros**
-#### *Implemented by Lydia Acton*
-- Accessed via: Macros tab, Keyboard Shortcuts Start: (Ctrl + Q), Stop:(Ctrl + W), Load: (Ctrl + A)
-- I've tested all the different functions to make sure they save. Initially transformations didn't save because they didn't impliment java.io.Serializable, and crop cound't save because it had a bufferent issue in is constructor. I tested saving an out of bounds crop, initially would cause an error, but now the code checks if the coordionates are out of bounds. I tested the maving on mac and windows, I coded it on a mac then realised I had to alter it to work on windows because they use different slashes. I've tested trying to load incorrect files, or stoping when you haven't started, and it brings up apropiate error messages. 
-- No known issues
-<br/><br/>
+### Drawing Tools
+- **Shapes** — rectangles, ovals drawn within a selected region
+- **Lines** — diagonal, horizontal, and vertical lines
+- **Text** — draw text with a font chooser onto the image
+- **Colour picker & brush thickness** — configurable drawing settings
 
-## **Show us something**
+### Transformations
+- **Rotate** — arbitrary rotation
+- **Flip** — horizontal and vertical
+- **Resize** — scale the image up or down
+- **Crop** — crop to a rectangular mouse selection
 
-### **Filters can be applied to rectangular selection**
-#### *Implemented by Lydia Acton*
-- Accessed via: By selecting an area then applying a filter or colour filter
-- I've tested this on all the filter and colour filters, I've test that it works if you select a region outside an image.
-- No known issues
-<br/><br/>
+### Colour Adjustments
+- **Brightness & Contrast** — adjustable via sliders
+- **Convert to Greyscale**
 
-### **Show us something: Draw Text **
-#### *Implemented by Hamzah Alansi *
-- Accessed via: "Draw text" action in the "Draw in Selected Area" tab
-- Tested on: 2 Different Images with different Background transparencies
-- No known issues
-<br/><br/>
+### Other
+- **Undo / Redo** — full operation history
+- **Macros** — record, save, and replay sequences of operations
+- **Mouse selection** — click-and-drag rectangular region selection, zoom-aware
+- **Keyboard shortcuts** for most actions
+
+---
+
+## Getting Started
+
+### Prerequisites
+- Java 17+ (JDK)
+
+### Build & Run
+```bash
+# Compile
+javac -d bin -cp "lib/*" src/cosc202/andie/**/*.java src/cosc202/andie/*.java
+
+# Run
+java -cp "bin:lib/*" cosc202.andie.Andie
+```
+
+### Keyboard Shortcuts
+
+| Action | Shortcut |
+|---|---|
+| Emboss Filter | `Ctrl + E` |
+| Sobel Filter | `Ctrl + H` |
+| Posterise | `Ctrl + P` |
+| Crop to Selection | `Shift + X` |
+| Start Macro | `Ctrl + Q` |
+| Stop Macro | `Ctrl + W` |
+| Load Macro | `Ctrl + A` |
+
+---
+
+## Project Structure
+
+```
+src/cosc202/andie/
+├── Andie.java              # Entry point & GUI setup
+├── EditableImage.java      # Non-destructive image model
+├── ImagePanel.java         # Image display & mouse selection
+├── Colours/                # Brightness, contrast, greyscale
+├── Draw/                   # Shapes, lines, text, colour picker
+├── Filters/                # Mean, Gaussian, Median, Emboss, Sobel, etc.
+├── Transformations/        # Rotate, flip, resize, crop
+└── ViewActions/            # Zoom & view controls
+```
+
+---
+
+## Contributors
+
+- **Lydia Acton** — Filters (emboss, sobel, posterise, extended filters), macros, region filtering
+- **Ella Taylor** — Drawing functions, mouse selection
+- **Hamzah Alansi** — Crop, draw text, mouse selection
+- **Callum Walker** — Extended filters, core filter implementations
+- **Steven Mills** — Original ANDIE framework
+
+## License
+
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
