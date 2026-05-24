@@ -4,9 +4,6 @@ A desktop image editor built in Java Swing that applies all operations non-destr
 
 **[Try it in your browser](https://aaaansi.github.io/Andie/)** — no install required, runs via CheerpJ.
 
-<!-- Replace with your own screenshot: take a screenshot of ANDIE with an image loaded, save it as docs/screenshot.png -->
-![ANDIE screenshot](docs/screenshot.png)
-
 ---
 
 ## Features
